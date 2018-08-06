@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reflect Color Scheme Test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+      body {
+        background:#e4e4e4;
+        color:#797979;
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.3em;
+        line-height: 1.15em;
+        margin: 1.5em;
+      }
+      header { text-align: center; }
+      a:link, a:hover, a:active { color: #0085ff; }
+      a:visited { color: #9d44de; }
+      blockquote {
+        border-left: solid 2px;
+        padding-left: 1em;
+      }
+      pre {
+        font-family: "Dejavu Sans Mono", "Fira Mono", monospace;
+      }
+      .String { color: #609a0d; }
+      .LineNr { color: #797979; padding-bottom: 1px; }
+      .Function { color: #daad1a; }
+      .Comment { color: #797979; }
+      .Constant { color: #f9134d; }
+      .Special { color: #31c398; }
+      .Identifier { color: #dc65ca; }
+      .Statement { color: #9d44de; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1></h1>
+      <nav>
+        <a href="/">Light</a>&nbsp;&nbsp;
+        <a href="/dark.html">Dark</a>
+      </nav>
+    </header>
+    <h1>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h1>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
+    elit. Aenean commodo ligula eget dolor. Aenean massa 
+    <strong>strong</strong>. Cum sociis natoque penatibus 
+    et magnis dis parturient montes, nascetur ridiculus 
+    mus. Donec quam felis, ultricies nec, pellentesque 
+    eu, pretium quis, sem. Nulla consequat massa quis 
+    enim. Donec pede justo, fringilla vel, aliquet nec, 
+    vulputate eget, arcu. In enim justo, rhoncus ut, 
+    imperdiet a, venenatis vitae, justo. Nullam dictum 
+    felis eu pede <a class="external ext" href="#">link</a> 
+    mollis pretium. Integer tincidunt. Cras dapibus. 
+    Vivamus elementum semper nisi. Aenean vulputate 
+    eleifend tellus. Aenean leo ligula, porttitor eu, 
+    consequat vitae, eleifend ac, enim. Aliquam lorem ante, 
+    dapibus in, viverra quis, feugiat a, tellus. Phasellus 
+    viverra nulla ut metus varius laoreet. Quisque rutrum. 
+    Aenean imperdiet. Etiam ultricies nisi vel augue. 
+    Curabitur ullamcorper ultricies nisi.</p>
+    <blockquote>Lorem ipsum dolor sit amet, consectetuer 
+    adipiscing elit. Aenean commodo ligula eget dolor.</blockquote>
+    <h2>Aenean commodo ligula eget dolor aenean massa</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
+    elit. Aenean commodo ligula eget dolor. Aenean massa. 
+    Cum sociis natoque penatibus et magnis dis parturient 
+    montes, nascetur ridiculus mus. Donec quam felis, 
+    ultricies nec, pellentesque eu, pretium quis, sem.</p>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
+    elit. Aenean commodo ligula eget dolor. Aenean massa. 
+    Cum sociis natoque penatibus et magnis dis parturient 
+    montes, nascetur ridiculus mus. Donec quam felis, 
+    ultricies nec, pellentesque eu, pretium quis, sem.</p>
+    <ul>
+      <li>Lorem ipsum dolor sit amet consectetuer.</li>
+      <li>Aenean commodo ligula eget dolor.</li>
+      <li>Aenean massa cum sociis natoque penatibus.</li>
+    </ul>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
+    elit. Aenean commodo ligula eget dolor. Aenean massa. 
+    Cum sociis natoque penatibus et magnis dis parturient 
+    montes, nascetur ridiculus mus. Donec quam felis, 
+    ultricies nec, pellentesque eu, pretium quis, sem.</p>
+    <pre><code>
+<span id="L1" class="LineNr"> 1 </span><span class="Comment">#!/usr/bin/env lua</span>
+<span id="L2" class="LineNr"> 2 </span>
+<span id="L3" class="LineNr"> 3 </span>url = <span class="Identifier">require</span>(<span class="String">&quot;socket.url&quot;</span>)
+<span id="L4" class="LineNr"> 4 </span>https = <span class="Identifier">require</span>(<span class="String">&quot;ssl.https&quot;</span>)
+<span id="L5" class="LineNr"> 5 </span>json = <span class="Identifier">require</span>(<span class="String">&quot;json&quot;</span>)
+<span id="L6" class="LineNr"> 6 </span>
+<span id="L7" class="LineNr"> 7 </span><span class="Function">function</span> wikipedia(str)
+<span id="L8" class="LineNr"> 8 </span>    query = url.escape(str)
+<span id="L9" class="LineNr"> 9 </span>    response = https.request((<span class="String">&quot;<a href="https://en.wikipedia.org/w/api.php?action=opensearch&amp;format=json&amp;search=%s">https://en.wikipedia.org/w/api.php?action=opensearch&amp;format=json&amp;search=%s</a>&quot;</span>):format(query))
+<span id="L10" class="LineNr">10 </span>    <span class="Statement">if</span> response <span class="Statement">then</span>
+<span id="L11" class="LineNr">11 </span>        results = json.decode(response)
+<span id="L12" class="LineNr">12 </span>        link = (results[<span class="Constant">4</span>][<span class="Constant">1</span>] <span class="Statement">and</span> results[<span class="Constant">4</span>][<span class="Constant">1</span>] ~= <span class="String">''</span>) <span class="Statement">and</span> results[<span class="Constant">4</span>][<span class="Constant">1</span>] <span class="Statement">or</span> <span class="String">'No results'</span>
+<span id="L13" class="LineNr">13 </span>        description = (results[<span class="Constant">3</span>][<span class="Constant">1</span>] <span class="Statement">and</span> results[<span class="Constant">3</span>][<span class="Constant">1</span>] ~= <span class="String">''</span>) <span class="Statement">and</span> <span class="String">' - '</span> .. results[<span class="Constant">3</span>][<span class="Constant">1</span>] <span class="Statement">or</span> <span class="String">''</span>
+<span id="L14" class="LineNr">14 </span>        <span class="Identifier">io.write</span>((<span class="String">&quot;%s%s </span><span class="Special">\n</span><span class="String">&quot;</span>):format(link, description))
+<span id="L15" class="LineNr">15 </span>    <span class="Statement">end</span>
+<span id="L16" class="LineNr">16 </span><span class="Function">end</span>
+<span id="L17" class="LineNr">17 </span>
+<span id="L18" class="LineNr">18 </span><span class="Statement">if</span> arg[<span class="Constant">1</span>] <span class="Statement">then</span>
+<span id="L19" class="LineNr">19 </span>    wikipedia(arg[<span class="Constant">1</span>])
+<span id="L20" class="LineNr">20 </span><span class="Statement">else</span>
+<span id="L21" class="LineNr">21 </span>    <span class="Identifier">io.write</span>(<span class="String">'Please give me a search term: wikipedia.lua &quot;&lt;search&gt;&quot;</span><span class="Special">\n</span><span class="String">'</span>)
+<span id="L22" class="LineNr">22 </span><span class="Statement">end</span>
+    </code></pre>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
+    elit. Aenean commodo ligula eget dolor. Aenean massa. 
+    Cum sociis natoque penatibus et magnis dis parturient 
+    montes, nascetur ridiculus mus. Donec quam felis, 
+    ultricies nec, pellentesque eu, pretium quis, sem.</p>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing 
+    elit. Aenean commodo ligula eget dolor. Aenean massa. 
+    Cum sociis natoque penatibus et magnis dis parturient 
+    montes, nascetur ridiculus mus. Donec quam felis, 
+    ultricies nec, pellentesque eu, pretium quis, sem.</p>
+    <span style="color:#000000;">black</span>&nbsp;&nbsp;
+    <span style="color:#333333;">light black</span>&nbsp;&nbsp;
+    <span style="color:#f9134d;">red</span>&nbsp;&nbsp;
+    <span style="color:#e47812;">light red</span>&nbsp;&nbsp;
+    <span style="color:#609a0d;">green</span>&nbsp;&nbsp;
+    <span style="color:#02cc02;">light green</span>&nbsp;&nbsp;
+    <span style="color:#9c673e;">yellow</span>&nbsp;&nbsp;
+    <span style="color:#daad1a;">light yellow</span>&nbsp;&nbsp;
+    <span style="color:#0055ca;">blue</span>&nbsp;&nbsp;
+    <span style="color:#0085ff;">light blue</span>&nbsp;&nbsp;
+    <span style="color:#9d44de;">magenta</span>&nbsp;&nbsp;
+    <span style="color:#dc65ca;">light magenta</span>&nbsp;&nbsp;
+    <span style="color:#31c398;">cyan</span>&nbsp;&nbsp;
+    <span style="color:#1bb9b9;">light cyan</span>&nbsp;&nbsp;
+    <span style="color:#797979;">white</span>&nbsp;&nbsp;
+    <span style="color:white;">light white</span>&nbsp;&nbsp;
+  </body>
+</html>
