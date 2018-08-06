@@ -3,7 +3,7 @@ A color scheme that is visble with both light and dark backgrounds.
 
 I made this color scheme to use for web so users could have a choice between dark or light backgrounds. I may make terminal and editor themes in the future.
 
-A test page to see the colors is available !(here)[https://meskarune.github.io/reflect-colorscheme/]
+A test page to see the colors is available [here](https://meskarune.github.io/reflect-colorscheme/)
 
 ## The colors
 
